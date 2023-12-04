@@ -17,6 +17,7 @@ const SignInPage = () => {
                 password,
                 redirect: false,
             })
+            
             if(!signInResponse || signInResponse.ok !== true) {
                 setMessage("Invalid credentials");
             } else {

@@ -1,31 +1,30 @@
-import React from 'react';
-import { authOptions } from '../api/auth/[...nextauth]/route';
-import { getServerSession } from 'next-auth/next';
+
+import { BellAlertIcon, EnvelopeIcon, UserIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
 const Navbar = async () => {
-    const session = await getServerSession(authOptions);
-
+   
     return (
-        <div className='w-full px-4 py-8 bg-gray-300 flex flex-row items-center gap-4'>
-            <Link href='/'>Home</Link>
-            <Link href='/protected/dashboard'>Dashboard</Link>
-
-            {session && session.user?.email ? (
-                <>
-                    <Link href='/auth/signout'>Sign out</Link>
-                    <p>
-                        <b>Signed in as {session.user?.email}</b>
-                    </p>
-                </>
-            ) : (
-                <>
-                    <Link href='/auth/signin'>Sign in</Link>
-                    <Link href='/auth/signup'>Sign up</Link>
-                </>
-            )}
+        <div className='flex justify-end p-2 bg-slate-100'>
+            <ul className="flex item-center gap-x-4">
+                <li>
+                    <div className="text-['#2e4374'] border rounded p-1.5 border-gray-300">
+                        <EnvelopeIcon className="h-4"/>
+                    </div> 
+                </li>
+                <li>
+                    <div  className="text-['#2e4374'] border rounded p-1.5 border-gray-300">
+                        <UserIcon className="h-4"/>
+                    </div>
+                </li>
+                <li>
+                    <div className="text-['#2e4374'] border rounded p-1.5 border-gray-300">
+                            <BellAlertIcon className="h-4"/>
+                    </div>
+                </li>
+            </ul>
         </div>
-    );
+    )
 };
 
 export default Navbar;
